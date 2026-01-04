@@ -1,16 +1,375 @@
 ---
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  ExternalLink, 
+  Code2, 
+  Terminal, 
+  Cpu, 
+  Database, 
+  Layout, 
+  GraduationCap, 
+  Award,
+  Server
+} from 'lucide-react';
+import '../styles/global.css';
+import AFLogo from '../assets/logos/AF.svg?url';
+import ProfilePhoto from '../assets/images/andres-forero-perfil.jpg?url';
+import LogoSoulConnect from '../assets/logos/Soul Connect.svg?url';
+import LogoCoreStore from '../assets/logos/Core Store.svg?url';
+import LogoFactureo from '../assets/logos/Factureo.svg?url';
+import LogoCreative from '../assets/logos/Creative.svg?url';
+import LogoLivit from '../assets/logos/Livit.svg?url';
+import LogoMedPet from '../assets/logos/MedPet.svg?url';
 
+// --- TUS DATOS REALES ---
+
+const projects = [
+  {
+    title: "SoulConnect",
+    description: "Sistema de Gestión y Seguimiento Clínico. Plataforma robusta para administración de historias clínicas con alta disponibilidad.",
+    tags: ["Angular", "Java Spring Boot", "PostgreSQL", "Mantine UI"],
+    linkRepo: "https://github.com/forerovenecia97/SoulConnect",
+    linkDemo: "#",
+    logo: LogoSoulConnect
+  },
+  {
+    title: "Core Store",
+    description: "E-commerce de Hardware de Alto Rendimiento. Motor de búsqueda avanzado y arquitectura de 'islas' para carga instantánea.",
+    tags: ["Astro", "Go (Fiber)", "PostgreSQL", "Tailwind CSS"],
+    linkRepo: "https://github.com/forerovenecia97/Core-Store",
+    linkDemo: "#",
+    logo: LogoCoreStore
+  },
+  {
+    title: "Factureo ERP",
+    description: "Solución integral para PyMEs: inventario en tiempo real, POS, nómina y facturación electrónica automatizada.",
+    tags: ["Vue.js", "NestJS", "PostgreSQL", "Bootstrap"],
+    linkRepo: "https://github.com/forerovenecia97/factureo",
+    linkDemo: "#",
+    logo: LogoFactureo
+  },
+  {
+    title: "Creative",
+    description: "Plataforma Educativa Interactiva para matemáticas. Gamificación en tiempo real y componentes reactivos complejos.",
+    tags: ["Next.js", "NestJS", "PostgreSQL", "Tailwind"],
+    linkRepo: "https://github.com/forerovenecia97/Creative",
+    linkDemo: "#",
+    logo: LogoCreative
+  },
+  {
+    title: "Livit",
+    description: "Sistema de Administración de Copropiedades. Centraliza pagos, comunicación y gestión de zonas comunes.",
+    tags: ["Next.js", "NestJS", "MongoDB", "Tailwind"],
+    linkRepo: "https://github.com/forerovenecia97/Livit",
+    linkDemo: "#",
+    logo: LogoLivit
+  },
+  {
+    title: "MedPet",
+    description: "Gestión de Salud Veterinaria. Digitalización de expedientes y sistema de alertas preventivas para mascotas.",
+    tags: ["Angular", "Java Spring Boot", "PostgreSQL", "Bootstrap"],
+    linkRepo: "https://github.com/forerovenecia97/MedPet",
+    linkDemo: "#",
+    logo: LogoMedPet
+  }
+];
+
+const skills = {
+  frontend: ["Next.js", "React", "Astro", "Vue.js", "Angular", "Tailwind CSS"],
+  backend: ["Node.js (NestJS)", "Go (Fiber/Gin)", "Java (Spring Boot)", "Python (Django/FastAPI)"],
+  data: ["PostgreSQL", "MongoDB"],
+  tools: ["Docker", "Git/GitHub", "RAG (IA)", "Microservicios", "Clean Arch"]
+};
+
+const certs = [
+  "Programación Web – Univ. Nacional (2022)",
+  "Redes y Telecomunicaciones – Huawei / INCAP",
+  "Técnico en Asistencia Administrativa – SENA",
+  "Instalación de Redes y Mantenimiento – INCAP"
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Portfolio | Ing. Sistemas Full Stack</title>
+  </head>
+  <body id="top" class="bg-black text-zinc-200 font-sans selection:bg-emerald-500/30">
+    
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800/50">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <button type="button" id="open-profile" class="flex items-center gap-3 text-2xl font-bold tracking-tighter hover:text-emerald-400 transition-colors focus:outline-none">
+          <img src={AFLogo} alt="AF logo" class="h-10 w-10 shrink-0 scale-[6.5] md:scale-[6.5] transform origin-left" />
+        </button>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
+          <a href="#top" class="hover:text-emerald-400 transition-colors">Inicio</a>
+          <a href="#proyectos" class="hover:text-emerald-400 transition-colors">Proyectos</a>
+          <a href="#stack" class="hover:text-emerald-400 transition-colors">Stack</a>
+          <a href="#educacion" class="hover:text-emerald-400 transition-colors">Educación</a>
+        </div>
+        <a href="#contacto" class="bg-emerald-600/10 text-emerald-400 border border-emerald-500/20 px-4 py-2 rounded-full text-sm font-semibold hover:bg-emerald-600 hover:text-white transition-all">
+          Contactar
+        </a>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6">
+      
+      <section class="min-h-screen flex flex-col justify-center pt-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-xs font-medium mb-6 w-fit animate-fade-in">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          Disponible para trabajar
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+          Ingeniero de Sistemas <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">
+            Full Stack Developer
+          </span>
+        </h1>
+        
+        <p class="text-xl text-zinc-400 max-w-2xl mb-10 leading-relaxed">
+          Estudiante de 7mo semestre apasionado por el software escalable. 
+          Especializado en arquitecturas complejas con <strong class="text-emerald-400">React, Go, Java y Python</strong>. 
+          Experiencia en Microservicios e IA (RAG).
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#proyectos" class="bg-emerald-500 text-black px-8 py-4 rounded-xl font-bold hover:bg-emerald-400 transition-transform hover:scale-105 flex items-center gap-2">
+            Ver Proyectos <Code2 size={20}/>
+          </a>
+          <a href="https://github.com/forerovenecia97" target="_blank" rel="noreferrer" class="bg-zinc-900/50 border border-zinc-800 text-white px-8 py-4 rounded-xl font-bold hover:bg-zinc-800 transition-colors flex items-center gap-2">
+            <Github size={20}/> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/fabio-andr%C3%A9s-forero-salda%C3%B1a-11443b238/" target="_blank" rel="noreferrer" class="bg-zinc-900/50 border border-zinc-800 text-blue-400 px-8 py-4 rounded-xl font-bold hover:bg-zinc-800 transition-colors flex items-center gap-2">
+            <Linkedin size={20}/> LinkedIn
+          </a>
+        </div>
+      </section>
+
+      <section id="stack" class="py-20 border-t border-zinc-900">
+        <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3">
+          <Cpu class="text-emerald-400" /> Arsenal Tecnológico
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-colors">
+            <div class="flex items-center gap-3 mb-4 text-emerald-400">
+              <Layout size={24} />
+              <h3 class="font-bold text-white">Frontend</h3>
+            </div>
+            <ul class="space-y-2 text-zinc-400 text-sm">
+              {skills.frontend.map(skill => (
+                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>{skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-colors">
+            <div class="flex items-center gap-3 mb-4 text-cyan-400">
+              <Server size={24} />
+              <h3 class="font-bold text-white">Backend</h3>
+            </div>
+            <ul class="space-y-2 text-zinc-400 text-sm">
+              {skills.backend.map(skill => (
+                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-cyan-500"></div>{skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-colors">
+            <div class="flex items-center gap-3 mb-4 text-purple-400">
+              <Database size={24} />
+              <h3 class="font-bold text-white">Data & IA</h3>
+            </div>
+            <ul class="space-y-2 text-zinc-400 text-sm">
+              {skills.data.map(skill => (
+                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>{skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-colors">
+            <div class="flex items-center gap-3 mb-4 text-orange-400">
+              <Terminal size={24} />
+              <h3 class="font-bold text-white">DevOps & Arq</h3>
+            </div>
+            <ul class="space-y-2 text-zinc-400 text-sm">
+              {skills.tools.map(skill => (
+                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-orange-500"></div>{skill}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="py-20">
+        <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3">
+          <Code2 class="text-emerald-400" /> Proyectos Destacados
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <article class="group relative bg-zinc-900/50 border border-zinc-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300">
+              <div class="p-6 h-full flex flex-col">
+                <div class="flex justify-center mb-6">
+                  {project.logo && (
+                    <img src={project.logo} alt={`${project.title} logo`} class="h-12 w-12 object-contain scale-[6.5] origin-center filter brightness-0 invert pointer-events-none" />
+                  )}
+                </div>
+                <div class="flex gap-3 mb-4 justify-center">
+                  <a href={project.linkRepo} target="_blank" rel="noreferrer" class="text-zinc-400 hover:text-white" title="Ver Código"><Github size={18} /></a>
+                  <a href={project.linkDemo} target="_blank" rel="noreferrer" class="text-zinc-400 hover:text-white" title="Ver Demo"><ExternalLink size={18} /></a>
+                </div>
+                
+                <p class="text-zinc-400 text-sm mb-6 flex-grow leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  {project.tags.map((tag) => (
+                    <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-300 bg-emerald-950/30 border border-emerald-900 px-2 py-1 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="educacion" class="py-20 border-t border-zinc-900 mb-20">
+        <div class="grid md:grid-cols-2 gap-12">
+          
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <GraduationCap class="text-emerald-400" /> Formación Académica
+            </h2>
+            <div class="relative border-l-2 border-zinc-800 ml-3 pl-8 pb-8">
+              <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-black"></div>
+              <h3 class="text-xl font-bold text-white">Ingeniería de Sistemas</h3>
+              <span class="text-emerald-400 text-sm font-mono block mb-2">Universidad Minuto de Dios</span>
+              <p class="text-zinc-400">Actualmente cursando el 7mo Semestre.</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <Award class="text-emerald-400" /> Certificaciones
+            </h2>
+            <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800">
+              <ul class="space-y-4">
+                {certs.map((cert) => (
+                  <li class="flex items-start gap-3 text-zinc-300 text-sm">
+                    <div class="mt-1 min-w-[16px]">✅</div>
+                    {cert}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <footer id="contacto" class="py-12 border-t border-zinc-900 text-center">
+        <h2 class="text-2xl font-bold text-white mb-6">¿Listo para colaborar?</h2>
+        <p class="text-zinc-400 mb-8 max-w-lg mx-auto">
+          Busco mi primera oportunidad profesional para aportar valor con código limpio y soluciones escalables.
+        </p>
+        <div class="flex justify-center gap-6 mb-12">
+          <a href="mailto:forerovenecia97@gmail.com" class="text-zinc-400 hover:text-emerald-400 transition-colors flex items-center gap-2">
+            <Mail size={20}/> Email
+          </a>
+          <a href="https://github.com/forerovenecia97" target="_blank" rel="noreferrer" class="text-zinc-400 hover:text-emerald-400 transition-colors flex items-center gap-2">
+            <Github size={20}/> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/fabio-andr%C3%A9s-forero-salda%C3%B1a-11443b238/" target="_blank" rel="noreferrer" class="text-zinc-400 hover:text-emerald-400 transition-colors flex items-center gap-2">
+            <Linkedin size={20}/> LinkedIn
+          </a>
+        </div>
+        <p class="text-zinc-600 text-sm">
+          © {new Date().getFullYear()} - Desarrollado con Astro, Tailwind & ❤️
+        </p>
+      </footer>
+
+    </main>
+
+      <div id="profile-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div class="relative w-full max-w-md mx-4 rounded-2xl border border-zinc-800 bg-zinc-900/90 p-6 shadow-2xl">
+          <button type="button" id="close-profile" class="absolute right-3 top-3 text-zinc-400 hover:text-white">
+            ✕
+          </button>
+          <div class="flex flex-col items-center gap-4 text-center">
+            <div class="h-24 w-24 rounded-full border border-emerald-500/40 bg-zinc-950/80 flex items-center justify-center overflow-hidden">
+              <img src={ProfilePhoto} alt="Foto de Fabio Andrés Forero Saldaña" class="h-full w-full object-cover" />
+            </div>
+            <div>
+              <p class="text-sm uppercase tracking-[0.2em] text-emerald-400">Ingeniería de Sistemas</p>
+              <h3 class="text-2xl font-bold text-white">Fabio Andrés Forero Saldaña</h3>
+            </div>
+            <div class="w-full space-y-2 text-sm text-zinc-300">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-zinc-400">Teléfono</span>
+                <a href="tel:+573123102284" class="text-emerald-300 hover:text-emerald-200">+57 312 310 2284</a>
+              </div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-zinc-400">Correo</span>
+                <a href="mailto:forerovenecia97@gmail.com" class="text-emerald-300 hover:text-emerald-200">forerovenecia97@gmail.com</a>
+              </div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-zinc-400">Universidad</span>
+                <span class="text-emerald-300">Uniminuto (7mo semestre)</span>
+              </div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-zinc-400">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/fabio-andr%C3%A9s-forero-salda%C3%B1a-11443b238/" target="_blank" rel="noreferrer" class="text-emerald-300 hover:text-emerald-200">Perfil</a>
+              </div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-zinc-400">GitHub</span>
+                <a href="https://github.com/forerovenecia97" target="_blank" rel="noreferrer" class="text-emerald-300 hover:text-emerald-200">@forerovenecia97</a>
+              </div>
+            </div>
+            <div class="flex gap-3 pt-2">
+              <a href="mailto:forerovenecia97@gmail.com" class="bg-emerald-600 text-black font-semibold px-4 py-2 rounded-lg hover:bg-emerald-500">Contactar</a>
+              <button type="button" id="close-profile-cta" class="border border-zinc-700 text-zinc-200 px-4 py-2 rounded-lg hover:border-emerald-500 hover:text-emerald-200">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const openBtn = document.getElementById('open-profile');
+        const modal = document.getElementById('profile-modal');
+        const closeBtn = document.getElementById('close-profile');
+        const closeCta = document.getElementById('close-profile-cta');
+
+        const openModal = () => {
+          modal?.classList.remove('hidden');
+          modal?.classList.add('flex');
+        };
+
+        const closeModal = () => {
+          modal?.classList.add('hidden');
+          modal?.classList.remove('flex');
+        };
+
+        openBtn?.addEventListener('click', openModal);
+        closeBtn?.addEventListener('click', closeModal);
+        closeCta?.addEventListener('click', closeModal);
+        modal?.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeModal();
+        });
+      </script>
+  </body>
 </html>
