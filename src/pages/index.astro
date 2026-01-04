@@ -99,7 +99,7 @@ const certs = [
   </head>
   <body id="top" class="bg-black text-zinc-200 font-sans selection:bg-emerald-500/30">
     
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800/50">
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800/50 relative">
       <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <button type="button" id="open-profile" class="flex items-center gap-3 text-2xl font-bold tracking-tighter hover:text-emerald-400 transition-colors focus:outline-none">
           <img src={AFLogo} alt="AF logo" class="h-10 w-10 shrink-0 scale-[6.5] md:scale-[6.5] transform origin-left" />
@@ -118,7 +118,7 @@ const certs = [
         </button>
       </div>
 
-      <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-t border-zinc-800 px-6 pb-6 pt-3">
+      <div id="mobile-menu" class="hidden md:hidden absolute inset-x-0 top-full z-40 bg-black/95 border-b border-zinc-800 px-6 pb-6 pt-3">
         <div class="flex flex-col gap-3 text-sm font-medium text-zinc-200">
           <a href="#top" class="py-2 px-3 rounded-lg hover:bg-zinc-900" data-menu-link>Inicio</a>
           <a href="#proyectos" class="py-2 px-3 rounded-lg hover:bg-zinc-900" data-menu-link>Proyectos</a>
